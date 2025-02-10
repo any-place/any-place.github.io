@@ -35,6 +35,82 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title"> <b>AnyPlace</b>: Learning Generalized Object Placement for Robot Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://y556zhao.github.io/">Yuchi Zhao</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://miroslavbogdanovic.github.io/">Miroslav Bogdanovic</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://nicklcy.github.io/">Chengyuan Luo</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://steventohme.ca/">Steven Tohme</a><sup>4</sup>,
+            </span>
+            <a href="https://kouroshd.github.io/">Kourosh Darvish</a><sup>1,5</sup>,
+           </span>
+            <span class="author-block">
+              <a href="https://www.matter.toronto.edu/basic-content-page/about-alan">Al&aacute;n Aspuru-Guzik</a><sup>1,2,5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.toronto.edu/~florian/">Florian Shkurti</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://animesh.garg.tech/">Animesh Garg</a><sup>6</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Toronto,</span>
+            <span class="author-block"><sup>2</sup>Vector Institute,</span>
+            <span class="author-block"><sup>3</sup>Shanghai Jiao Tong University,</span>
+            <span class="author-block"><sup>4</sup>Wilfrid Laurier University,</span>
+            <span class="author-block"><sup>5</sup>Acceleration Consortium,</span>
+            <span class="author-block"><sup>6</sup>Georgia Institute of Technology</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://www.arxiv.org/pdf/2502.04531"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.arxiv.org/abs/2502.04531"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://any-place.github.io/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code(coming soon)</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://any-place.github.io/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-table"></i>
+                  </span>
+                  <span>Dataset(coming soon)</span>
+                  </a>
+            </div>
         </div>
       </div>
     </div>
@@ -47,8 +123,8 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <div class="publication-video">
-          <video poster="./static/images/anyplace-video-preview.png" id="full-video" controls playsinline height="100%">
-            <source src="./static/videos/anyplace-video.mp4"
+          <video poster="./static/images/anyplace-video-preview.jpg" id="full-video" controls playsinline height="100%">
+            <source src="./static/videos/anyplace-release-final.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -74,16 +150,13 @@
             Achieving robust and generalizable object placement in robotic tasks is challenging due to the diversity of object geometries and placement configurations. 
           </p>
           <p>  
-            We propose AnyPlace, a two-stage method that predicts a wide range of feasible placement poses from partial point clouds. 
-            We leverage a vision-language model to generate candidate placement locations, effectively capturing discrete placement options. 
-            For each candidate, our low-level pose prediction models, incorporating both diffusion- and energy-based approaches, learn diverse configurations and 
-            predict precise placement poses. To facilitate learning, we created a large and diverse fully synthetic dataset of 1,489 randomly generated objects that 
-            spans three fundamental placement configurations: insertion, stacking, and hanging. 
+            To address this, we propose AnyPlace, a two-stage method trained entirely on synthetic data, capable of predicting a wide range of feasible placement poses for real-world tasks. Our key insight is that by leveraging a Vision-Language Model (VLM) to
+             identify rough placement locations, we focus only on the relevant regions for local placement, which enables us to train the low-level placement-pose-prediction model to capture diverse placements efficiently. For training, we generate a fully synthetic 
+             dataset of randomly generated objects in different placement configurations (insertion, stacking, hanging) and train local placement-prediction models. 
           </p>
           <p>
-            Our approach outperforms baseline models in simulation across all three 
-            common placement tasks, including inserting, stacking and hanging. In real-world experiments, we demonstrate its ability to successfully predict placement poses of different configurations in a zero-shot manner. Specfically,
-            our model achieves 80% success rate on the vial insertion task, demonstrating strong robustness and generalization.
+            We conduct extensive evaluations in simulation, demonstrating that our method outperforms baselines in terms of success rate, coverage of possible placement modes, and precision. In real-world experiments, we show how our approach directly transfers models
+             trained purely on synthetic data to the real world, where it successfully performs placements in scenarios where other models struggle -- such as with varying object geometries, diverse placement modes, and achieving high precision for fine placement.
           </p>
         </div>
       </div>
@@ -246,6 +319,23 @@
             </div>
           </div>
 
+  </div>
+</section>
+
+<section class="section" id="Citation">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @misc{zhao2025anyplacelearninggeneralizedobject,
+        title={AnyPlace: Learning Generalized Object Placement for Robot Manipulation}, 
+        author={Yuchi Zhao and Miroslav Bogdanovic and Chengyuan Luo and Steven Tohme and Kourosh Darvish and Alán Aspuru-Guzik and Florian Shkurti and Animesh Garg},
+        year={2025},
+        eprint={2502.04531},
+        archivePrefix={arXiv},
+        primaryClass={cs.RO},
+        url={https://arxiv.org/abs/2502.04531}, 
+      }
+    </code></pre>
   </div>
 </section>
 
